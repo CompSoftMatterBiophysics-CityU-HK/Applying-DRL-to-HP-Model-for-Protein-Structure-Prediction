@@ -283,6 +283,7 @@ for episode in range(num_episodes):
             display_mode=display_mode,
             save_fig=save_fig,
             save_path=save_path,
+            score=rewards_current_episode,
         )
 
     if (episode == 0) or ((episode+1) % show_every == 0):

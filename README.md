@@ -12,9 +12,12 @@ This repository contains source code for the publication:
 
 > [Poster](https://neurips.cc/media/PosterPDFs/NeurIPS%202022/56887.png) and [Extended Abstract](https://ml4physicalsciences.github.io/2022/files/NeurIPS_ML4PS_2022_20.pdf)
 
-- Ful manuscript is in press with journal "Physica A: Statistical Mechanics and its Applications". **See the preprint on Arxiv:**
-
+- Ful manuscript is accepted and now in press with journal "Physica A: Statistical Mechanics and its Applications".
+**See the preprint on Arxiv:**
 > [Arxiv @ https://arxiv.org/abs/2211.14939](https://arxiv.org/abs/2211.14939)
+
+**DOI of Physica A**
+> https://doi.org/10.1016/j.physa.2022.128395
 
 ---
 

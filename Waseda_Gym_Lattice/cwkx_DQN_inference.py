@@ -33,14 +33,20 @@ import datetime
 from time import time
 from timer import secondsToStr, time_log
 
+N_mer = "48mer"
 
-seq = "hhhpphphphpphphphpph"  # 20mer-B
-# 20mer-B
-q_state_dict_path = "./Sample_DQN_weights/256L2/HHHPPH-PhyA_20merB-LSTM_noTrap_noES-1991-100K-seed1991-100000epi-state_dict.pth"
-
-# seq = "PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP"  # 36mer
-# # 36mer
-# q_state_dict_path = "./Sample_DQN_weights/256L2/PPPHHP-36mer-LSTM_noTrap_noES-1991-500K-seed1991-500000epi-state_dict.pth"
+if N_mer == "20mer-B":
+    seq = "hhhpphphphpphphphpph"  # 20mer-B
+    q_state_dict_path = "./Sample_DQN_weights/256L2/20merB-example-state_dict.pth"
+elif N_mer == "36mer":
+    seq = "PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP"  # 36mer
+    q_state_dict_path = "./Sample_DQN_weights/256L2/36mer-example-state_dict.pth"
+elif N_mer == "48mer":
+    seq = "PPHPPHHPPHHPPPPPHHHHHHHHHHPPPPPPHHPPHHPPHPPHHHHH"  # 48mer
+    # 2-layer LSTM architecture (in 256L2 dir)
+    q_state_dict_path = "./Sample_DQN_weights/256L2/48mer-256L2-example-state_dict.pth"
+    # 3-layer LSTM architecture (in 512L3 dir)
+    q_state_dict_path = "./Sample_DQN_weights/512L3/48mer-512L3-example-state_dict.pth"
 
 
 seq = seq.upper()  # Require HP upper case!
@@ -280,7 +286,7 @@ for n_episode in range(num_episodes):
         if info["is_trapped"]:
             print('info["is_trapped"] = ', info["is_trapped"])
             # reward = -(OPT_S - state_E)  # offset by state_E
-            # PRE Jan 2022 discover that trap penalty is interfering
+            # Jan 2022 discover that trap penalty is interfering
             reward = state_E
             # print("adjusted trapped reward = ", reward)
 

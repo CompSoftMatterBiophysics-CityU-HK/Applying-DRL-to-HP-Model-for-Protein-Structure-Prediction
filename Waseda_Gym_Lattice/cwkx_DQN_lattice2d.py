@@ -142,7 +142,7 @@ max_steps_per_episode = len(seq)
 learning_rate = 0.0005
 
 mem_start_train = max_steps_per_episode * 50  # for memory.size() start training
-TARGET_UPDATE = 100  # fix to 100 for PRE publication
+TARGET_UPDATE = 100  # fix to 100
 
 # capped at 50,000 for <=48mer
 buffer_limit = int(min(50000, num_episodes // 10))  # replay-buffer size
@@ -506,7 +506,7 @@ for n_episode in range(num_episodes):
         if info["is_trapped"]:
             # print('info["is_trapped"] = ', info["is_trapped"])
             # reward = -(OPT_S - state_E)  # offset by state_E
-            # PRE Jan 2022 discover that trap penalty is interfering
+            # Jan 2022 discover that trap penalty is interfering
             reward = state_E
             # print("adjusted trapped reward = ", reward)
 
@@ -539,17 +539,7 @@ for n_episode in range(num_episodes):
         # NOTE: MUST ENSURE THE REWARD IS FINALIZED BEFORE FEEDING TO RL ALGO!!
 
         r = reward
-        """
-        # PhysicaA Review suggest to:
-        # r_{t+1} = lambda_r * eta_{t+1}+eta*|E_state|,
-        # where eta_{t+1} = 1 if there is a H-H contact in the next step otherwise 0
-        # prog = (step+1)/(max_steps_per_episode-2)
-        # print("prog = ", prog)
-        # r = (1-prog) * step_E + reward
-        r = np.around(epsilon, 1) * step_E + reward
-        # print("r = ", r)
-        score = r
-        """
+
         # NOTE: done_mask is for when you get the end of a run,
         # then is no future reward, so we mask it with done_mask
         done_mask = 0.0 if done else 1.0

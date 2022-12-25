@@ -20,7 +20,21 @@ This repository contains source code for the publication:
 **Preprint on Arxiv:**
 > [Arxiv @ https://arxiv.org/abs/2211.14939](https://arxiv.org/abs/2211.14939)
 
+### Citation
 
+```latex
+@article{yang2022applying,
+    title = {Applying deep reinforcement learning to the HP model for protein structure prediction},
+    journal = {Physica A: Statistical Mechanics and its Applications},
+    volume = {609},
+    pages = {128395},
+    year = {2023},
+    issn = {0378-4371},
+    doi = {https://doi.org/10.1016/j.physa.2022.128395},
+    url = {https://www.sciencedirect.com/science/article/pii/S0378437122009530},
+    author = {Kaiyuan Yang and Houjing Huang and Olafs Vandans and Adithya Murali and Fujia Tian and Roland H.C. Yap and Liang Dai}
+}
+```
 
 ---
 
@@ -33,6 +47,7 @@ showing the distinct best-known and next best conformations:
 **Zenodo open data repository**
 > https://zenodo.org/record/7482308
 
+The conformation action sequences (in text files) are also available here in the folder [`./conformations`](./conformations)
 
 ---
 ## Setup and Installation
@@ -143,3 +158,14 @@ RNN code adapted from Aladdin Persson YouTube video:
 <!-- ## Misc
 
 The related work by Jafari et al. 2020 was not compared over integrity concerns. Please see **the PubPeer entry**: https://pubpeer.com/publications/E61AA803C8CB422EC4C05A6C39D87E -->
+
+---
+#### More GIFs :)
+
+* 20mer-B
+![20merB-Energy10-GIF](./20mer-B_E10.gif)
+* 25mer
+![25mer-Energy8-GIF](./25mer_E8.gif)
+* 36mer
+![36mer-Energy14-1-GIF](./36mer_E14_1.gif)
+![36mer-Energy14-2-GIF](./36mer_E14_2.gif)

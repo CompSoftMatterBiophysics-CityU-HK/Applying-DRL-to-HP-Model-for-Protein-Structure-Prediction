@@ -190,7 +190,6 @@ def extract_max_per_chunk(rewards_all_episodes,
                           num_episodes,
                           show_every):
     """
-    for PRE manuscript,
     extract the max per chunk
     """
     rewards_per_N_episodes = np.split(

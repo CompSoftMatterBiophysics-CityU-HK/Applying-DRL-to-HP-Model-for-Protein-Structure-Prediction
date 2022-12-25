@@ -8,11 +8,15 @@ _Gif of 48mer folding to a conformation with best-known enegry of -23_
 This repository contains source code for the publication:
 > Applying Deep Reinforcement Learning to the HP Model for Protein Structure Prediction
 
-- Extended abstract is accepted at the **[Machine Learning and the Physical Sciences workshop, NeurIPS 2022](https://ml4physicalsciences.github.io/2022/)**
+- Extended abstract is accepted at the **Machine Learning and the Physical Sciences workshop, NeurIPS 2022** ([website](https://ml4physicalsciences.github.io/2022/))
 
-> [Poster](https://neurips.cc/media/PosterPDFs/NeurIPS%202022/56887.png) and [Extended Abstract](https://ml4physicalsciences.github.io/2022/files/NeurIPS_ML4PS_2022_20.pdf)
+**NeurIPS Poster**
+> https://neurips.cc/media/PosterPDFs/NeurIPS%202022/56887.png
 
-- Ful manuscript is published at journal **Physica A: Statistical Mechanics and its Applications** Volume 609, 1 January 2023, 128395:
+**NeurIPS Extended Abstract**
+> https://ml4physicalsciences.github.io/2022/files/NeurIPS_ML4PS_2022_20.pdf
+
+- Ful manuscript is published in journal **Physica A: Statistical Mechanics and its Applications**, Volume 609, 1 January 2023, 128395:
 
 **DOI of Physica A**
 > https://doi.org/10.1016/j.physa.2022.128395
@@ -124,18 +128,37 @@ nohup python3 train_random_lattice2d.py hphpphhphpphphhpphph 42 20merA-RAND-Seed
 
 ## Inference
 
-An example inference script is provided for a 20mer-B and 36mer at `Waseda_Gym_Lattice/cwkx_DQN_inference.py`
+An example inference script is provided for 20mer-B, 36mer, and 48mer at `Waseda_Gym_Lattice/cwkx_DQN_inference.py`
 
+Select which N-mer to run the inference for by change `N_mer`:
+```py
+N_mer = "48mer"
+
+if N_mer == "20mer-B":
+    seq = "hhhpphphphpphphphpph"  # 20mer-B
+    q_state_dict_path = "./Sample_DQN_weights/256L2/HHHPPH-PhyA_20merB-LSTM_noTrap_noES-1991-100K-seed1991-100000epi-state_dict.pth"
+elif N_mer == "36mer":
+    seq = "PPPHHPPHHPPPPPHHHHHHHPPHHPPPPHHPPHPP"  # 36mer
+    q_state_dict_path = "./Sample_DQN_weights/256L2/PPPHHP-36mer-LSTM_noTrap_noES-1991-500K-seed1991-500000epi-state_dict.pth"
+elif N_mer == "48mer":
+    seq = "PPHPPHHPPHHPPPPPHHHHHHHHHHPPPPPPHHPPHHPPHPPHHHHH"  # 48mer
+    # 2-layer LSTM architecture (in 256L2 dir)
+    q_state_dict_path = "./Sample_DQN_weights/256L2/48mer-256L2-example-state_dict.pth"
+    # 3-layer LSTM architecture (in 512L3 dir)
+    q_state_dict_path = "./Sample_DQN_weights/512L3/48mer-512L3-example-state_dict.pth"
+```
+Essentailly, the training script `cwkx_DQN_lattice2d.py` saves the model as a `state_dict`.
+`cwkx_DQN_inference.py` loads the model for inference.
+
+Four example trained weights for can be loaded from the `Waseda_Gym_Lattice/Sample_DQN_weights/` folder. Three example weights for 256L2 architecture (for 20mer-B, 36mer, or 48mer), and an example weight for 512L3 architecture (for 48mer).
+
+After choosing the trained weight and N-mer, simply run the script by:
 ```bash
 cd Waseda_Gym_Lattice
 
 python cwkx_DQN_inference.py
 ```
 
-Two example trained weights for 20mer-B and 36mer can be found at `Waseda_Gym_Lattice/Sample_DQN_weights/256L2/HHHPPH-PhyA_20merB-LSTM_noTrap_noES-1991-100K-seed1991-100000epi-state_dict.pth` and `Waseda_Gym_Lattice/Sample_DQN_weights/256L2/PPPHHP-36mer-LSTM_noTrap_noES-1991-500K-seed1991-500000epi-state_dict.pth`.
-
-Essentailly, the training script `cwkx_DQN_lattice2d.py` saves the model as a `state_dict`.
-`cwkx_DQN_inference.py` loads the model for Inference.
 
 ---
 
